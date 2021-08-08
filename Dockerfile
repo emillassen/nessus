@@ -1,17 +1,17 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
-LABEL maintainer="jbreed"
+LABEL maintainer="emillassen"
 
-# Add configuration folder
 ADD config /tmp/
 
-RUN apt-get update -y \
-	&& apt-get upgrade -y \
-	&& apt-get install -y apt-utils tzdata 
+RUN apt-get update -y && apt-get upgrade -y \
+    && apt-get install -y \
+    apt-utils \
+    tzdata \
+    && rm -rf /var/lib/apt/lists/*
 
-# port and volume
 EXPOSE 8834
+
 VOLUME ["/config"]
 
-# Run installation script
 ENTRYPOINT ["/bin/bash", "/tmp/setup.sh"]
