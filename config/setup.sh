@@ -1,8 +1,11 @@
 #!/bin/bash
-# Author: jbreed
-# Purpose: setup the Nessus docker environment
 
 set -e
+
+FILE=/config/opt/nessus/sbin/nessusd
+if test -f "$FILE"; then
+echo "Nessus is already setup"
+else
 
 # Setup permissions
 echo "Setting user permissions..."
@@ -20,12 +23,12 @@ fi
 
 # Add DNS resolvers
 echo "Adding nameservers to /etc/resolv.conf..."
-echo 'nameserver 1.1.1.1' >> /etc/resolv.conf
-echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
+echo 'nameserver 9.9.9.9' >> /etc/resolv.conf
+echo 'nameserver 149.112.112.112' >> /etc/resolv.conf
 
 # Extract nessus to either upgrade, or place initial install files
-echo "Extracting packaged nessus debian package: Nessus 8.5.1..."
-dpkg -x /tmp/Nessus-8.5.1-ubuntu1110_amd64.deb /config
+echo "Extracting packaged nessus debian package: Nessus 8.15.0..."
+dpkg -x /tmp/Nessus-8.15.0-ubuntu1110_amd64.deb /config
 
 # Set permissions on configuration files
 echo "Changing owner and group of configuration files..."
@@ -33,14 +36,10 @@ chown -R nobody:users /config
 
 # With nessus installed to the volume path; create symbolic links
 echo "Creating symbolic links..."
-ln -s /config/etc/init.d/nessusd /etc/init.d/nessusd
+ln -s /config/opt/nessus/sbin/nessusd /etc/init.d/nessusd
 ln -s /config/opt/nessus/ /opt/nessus
-
-# Cleanup .deb file no longer needed
-echo "Cleaning up..."
-rm -rf /tmp/Nessus-8.5.1-ubuntu1110_amd64.deb 
+fi
 
 # Start the nessusd process
-service nessusd start && tail -f /dev/null
-
-exec "$@"
+echo "Starting Nessus"
+/config/opt/nessus/sbin/nessus-service
