@@ -1,7 +1,7 @@
 # Nessus
-Docker container for Nessus 8.
+Docker container for Nessus 10.
 
-This docker is aligned to utilize Ubuntu 20.04 with the corresponding Nessus .deb file. 
+This docker is aligned to utilize Ubuntu 20.04 LTS with the corresponding Nessus .deb file. 
 
 The Nessus file can be downloaded from here: https://www.tenable.com/downloads/nessus
 Nessus-XXXX-ubuntu1110_amd64.deb
