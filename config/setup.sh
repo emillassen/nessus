@@ -28,7 +28,7 @@ echo 'nameserver 149.112.112.112' >> /etc/resolv.conf
 
 # Extract nessus to either upgrade, or place initial install files
 echo "Extracting packaged nessus debian package"
-dpkg -x /tmp/Nessus-10.0.0-ubuntu1110_amd64.deb /config
+dpkg -x /tmp/Nessus-10.0.1-ubuntu1110_amd64.deb /config
 
 # Set permissions on configuration files
 echo "Changing owner and group of configuration files..."
