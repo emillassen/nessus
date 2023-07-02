@@ -1,7 +1,7 @@
 # Nessus
 Docker container for Nessus 10.
 
-This docker is aligned to utilize Ubuntu 22.04 LTS with the corresponding Nessus .deb file. 
+This docker is aligned to utilize Ubuntu 23.04 LTS with the corresponding Nessus .deb file. 
 
 The Nessus file can be downloaded from here: https://www.tenable.com/downloads/nessus
 
