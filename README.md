@@ -9,8 +9,8 @@ Current download command is:
 
 ```
 curl --request GET \
-  --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.5.3-ubuntu1404_amd64.deb' \
-  --output 'Nessus-10.5.3-ubuntu1404_amd64.deb'
+  --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.6.0-ubuntu1404_amd64.deb' \
+  --output 'Nessus-10.6.0-ubuntu1404_amd64.deb'
 ```
 
 ## Build steps
